@@ -1,1 +1,112 @@
-./data
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+
+# Python cache and compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Jupyter Notebooks (keep only if they contain important analysis)
+*.ipynb
+.ipynb_checkpoints/
+
+# Data files (keep only processed data if needed)
+data/train.csv
+data/test.csv
+data/submission.csv
+data/processed/
+
+# Model files (keep only model info, not the large binary files)
+models/*.joblib
+models/*.pkl
+models/*.pickle
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+logs/
+temp/
+
+# Docker build artifacts
+.dockerignore
+
+# Git files
+.git/
+.gitignore
+
+# Documentation that's not essential
+*.md
+!README.md
+
+# Test files that might contain sensitive data
+test_*.py
+*_test.py
+
+# Large binary files
+*.zip
+*.tar.gz
+*.rar
+
+# Environment files
+.env
+.env.local
+.env.production
+
+# Coverage reports
+.coverage
+htmlcov/
+.tox/
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# MyPy cache
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Backup files
+*.bak
+*.backup

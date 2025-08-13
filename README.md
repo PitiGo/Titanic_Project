@@ -142,9 +142,73 @@ model = joblib.load('models/titanic_random_forest.joblib')
 predictions = model.predict(X_new)
 ```
 
+## API Deployment
+
+### Local Development
+```bash
+# Install additional dependencies
+pip install fastapi uvicorn
+
+# Run the API locally
+uvicorn src.api:app --reload --host 0.0.0.0 --port 8000
+```
+
+### Docker Deployment
+```bash
+# Option 1: Using Docker Compose (Recommended)
+docker-compose up --build
+
+# Option 2: Using the script
+./docker-run.sh
+
+# Option 3: Manual Docker commands
+docker build -t titanic-api .
+docker run -p 8000:8000 titanic-api
+```
+
+### API Endpoints
+
+- **GET /** - API information
+- **GET /health** - Health check
+- **GET /model_info** - Model information
+- **POST /predict** - Single passenger prediction
+- **POST /predict_batch** - Batch predictions
+- **GET /docs** - Interactive API documentation (Swagger UI)
+
+### Testing the API
+```bash
+# Run the comprehensive demo
+python demo_api.py
+
+# Run the test suite
+python test_api.py
+```
+
+### Example API Usage
+```python
+import requests
+
+# Single prediction
+passenger_data = {
+    "Pclass": 1,
+    "Sex": "female",
+    "SibSp": 1,
+    "Parch": 0,
+    "Age": 29.0,
+    "Fare": 211.3375,
+    "Embarked": "S",
+    "Name": "Mrs. John Bradley Cumings"
+}
+
+response = requests.post("http://localhost:8000/predict", json=passenger_data)
+result = response.json()
+print(f"Survival probability: {result['survival_probability']:.2%}")
+```
+
 ## Notes
 
 - The scripts use relative paths, so make sure to run them from the correct directory
 - The data processing handles missing values and ensures both train and test datasets have the same features
 - Cross-validation is performed during training to assess model performance
 - The model parameters match those used in the original notebook
+- The API includes automatic data preprocessing to match the training pipeline
